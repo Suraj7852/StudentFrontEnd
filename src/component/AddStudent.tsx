@@ -15,7 +15,6 @@ const AddStudent: React.FC<ChildComponentProps> = ({location}) => {
     const handleValueChange = (event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
         event.preventDefault();
         const {name, value} = event.target;
-        console.log(name)
         switch (name) {
             case 'Age':
                 setAge(value);
@@ -40,11 +39,11 @@ const AddStudent: React.FC<ChildComponentProps> = ({location}) => {
         let label = getLabel();
         if (label === 'ADD') {
             addStudents(data).then(() => {
-                history.back();
+                history.push('/');
             });
         } else {
             updateStudent(location?.state?.id, data).then(() => {
-                history.back();
+                history.push("/");
             })
         }
     };

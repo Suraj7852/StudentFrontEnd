@@ -42,6 +42,12 @@ const Student: React.FC<StudentType> = ({id, name, age, roll}) => {
         history.push("/updateStudent", {id: id});
     }
 
+    const remStudent = () => {
+        removeStudent(id).then(() => {
+            window.location.reload();
+        });
+    };
+
     return (
         <div className={classes.div}>
             <Card className={classes.root}>
@@ -68,8 +74,7 @@ const Student: React.FC<StudentType> = ({id, name, age, roll}) => {
                 </CardActionArea>
                 <CardActions>
                     <Button size="small" color="primary" onClick={() => {
-                        removeStudent(id);
-                        history.push("/");
+                        remStudent();
                     }}>
                         REMOVE
                     </Button>
