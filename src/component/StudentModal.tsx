@@ -1,13 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import {makeStyles, Theme, createStyles} from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
-import {ThemeProvider} from '@material-ui/core/styles'
 import {openStudent} from "./axios";
 import {StudentType} from "./Student";
 import {Button} from "@material-ui/core";
 import {useHistory} from "react-router-dom";
-import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
-import { yellow } from '@material-ui/core/colors';
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -37,10 +34,6 @@ const useStyles = makeStyles((theme: Theme) =>
         },
     }),
 );
-
-const theme = createMuiTheme({
-    spacing: [0, 4, 8, 16, 32, 64],
-});
 
 export interface ChildComponentProps {
     location?: {

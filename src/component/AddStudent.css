@@ -5,3 +5,11 @@
     padding: 10px;
     text-align: center;
 }
+.textField{
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+    width: 50%;
+    margin: auto;
+    margin-bottom: 5%;
+}
