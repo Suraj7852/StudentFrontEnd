@@ -20,12 +20,12 @@ const Students: React.FC = () => {
 
     return (
         <div>
-            <div>
+            <div style={{display: 'flex', flexDirection: 'column', backgroundColor: '#90bef5', margin:'1%'}}>
                 <Button variant="outlined" color="primary" onClick={onClickHandler}>
                     ADD STUDENT
                 </Button>
             </div>
-            <div>
+            <div style={{backgroundColor: '#90bef5', margin:'1%'}}>
                 {
                     student.map((item: StudentType) =>
                         (<Student id={item.id} name={item.name} age={item.age} roll={item.roll}/>)

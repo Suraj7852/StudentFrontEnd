@@ -56,7 +56,7 @@ const AddStudent: React.FC<ChildComponentProps> = ({location}) => {
     }
 
     return (
-        <div className='detailsContactsLogin'>
+        <div className='inputContent'>
             <div style={{marginBottom: "5%"}}>
                 {getLabel()} STUDENT
             </div>
@@ -90,8 +90,7 @@ const AddStudent: React.FC<ChildComponentProps> = ({location}) => {
                     onChange={(event) => handleValueChange(event)}
                 />
             </div>
-            <Button variant="contained" color="primary"
-                    style={{marginBottom: "3%", marginLeft: "13%", marginTop: "5%"}} onClick={() => {
+            <Button variant="contained" color="primary" onClick={() => {
                 onSubmit()
             }}>
                 {getLabel()}

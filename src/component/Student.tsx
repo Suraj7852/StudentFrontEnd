@@ -27,7 +27,7 @@ const useStyles = makeStyles({
     div: {
         display: 'inline-block',
         width: '15%',
-        margin: '20px',
+        margin: '5%',
     }
 });
 
@@ -37,10 +37,6 @@ const Student: React.FC<StudentType> = ({id, name, age, roll}) => {
     const openStudent = (id: string | undefined) => {
         history.push("/openStudent", {id: id});
     };
-
-    const updateStudent = () => {
-        history.push("/updateStudent", {id: id});
-    }
 
     const remStudent = () => {
         removeStudent(id).then(() => {
@@ -72,23 +68,16 @@ const Student: React.FC<StudentType> = ({id, name, age, roll}) => {
                         </Typography>
                     </CardContent>
                 </CardActionArea>
-                <CardActions>
-                    <Button size="small" color="primary" onClick={() => {
-                        remStudent();
-                    }}>
-                        REMOVE
-                    </Button>
-                    <Button size="small" color="primary" onClick={() => {
-                        openStudent(id);
-                    }}>
-                        OPEN
-                    </Button>
-                    <Button size="small" color="primary" onClick={() => {
-                        updateStudent()
-                    }}>
-                        UPDATE
-                    </Button>
-                </CardActions>
+                <Button variant="contained" size="small" color="primary" style={{float:"left", margin:"1%"}} onClick={() => {
+                    remStudent();
+                }}>
+                    REMOVE
+                </Button>
+                <Button variant="contained" size="small" color="primary" style={{float:"right", margin:"1%"}} onClick={() => {
+                    openStudent(id);
+                }}>
+                    OPEN
+                </Button>
             </Card>
         </div>
     )

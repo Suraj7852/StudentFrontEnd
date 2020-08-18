@@ -1,7 +1,7 @@
-.detailsContactsLogin{
-    display: inline-block;
-    padding-top: 5%;
-    padding-left: 5%;
-    padding-right: 5%;
-    width: 41%;
+.inputContent{
+    width: 50%;
+    margin: auto;
+    border: 3px solid;
+    padding: 10px;
+    text-align: center;
 }
