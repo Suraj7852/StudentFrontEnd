@@ -65,6 +65,7 @@ const StudentModal: React.FC<ChildComponentProps> = ({location}) => {
                     open
                     onClose={() => {history.push("/")}}
                     className={classes.modal}
+                    hideBackdrop
                 >
                     <div className={classes.paper}>
                         <h2 id="server-modal-title">STUDENT INFORMATION</h2>
