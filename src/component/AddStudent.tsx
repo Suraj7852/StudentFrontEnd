@@ -27,8 +27,8 @@ const AddStudent: React.FC<ChildComponentProps> = ({location}) => {
             case 'Name':
                 setStudentName(value);
                 (value.length > 3 && value.length < 15) ?
-                    setErrorType({...errorType, name: false}):
-                    setErrorType({...errorType, name:true});
+                    setErrorType({...errorType, name: false}) :
+                    setErrorType({...errorType, name: true});
                 break;
             case 'Age':
                 (parseInt(value) > 3 && parseInt(value) < 19) ?
@@ -47,32 +47,39 @@ const AddStudent: React.FC<ChildComponentProps> = ({location}) => {
         }
     };
 
-    const validInput = () => {
-    let {name, rollNo, ageOfStudent} = errorType;
-        return !name && studentName.length > 0 && !rollNo && roll.length > 0 && !ageOfStudent && age.length > 0;
+    const validADDInput = () => {
+        let {name, rollNo, ageOfStudent} = errorType;
+        if (!name && studentName.length > 0 && !rollNo && roll.length > 0 && !ageOfStudent && age.length > 0) {
+            return true;
+        }
+        setErrorType({name: true, rollNo: true, ageOfStudent: true, ...errorType})
+        setSubmit(true);
+        return false;
+    }
+
+    const validUPDATEInput = () => {
+        return studentName.length > 0 || roll.length > 0 || age.length > 0;
     }
 
     const onSubmit = () => {
-        if (validInput()) {
-            const data = {
-                name: studentName,
-                age: age,
-                roll: roll
-            }
-            let label = getLabel();
-            if (label === 'ADD') {
-                addStudents(data).then(() => {
-                    history.push('/');
-                });
-            } else {
-                updateStudent(location?.state?.id, data).then(() => {
-                    history.push("/");
-                })
-            }
+        let label = getLabel();
+        let data = {
+            name: studentName,
+            age: age,
+            roll: roll
+        }
+        if (validUPDATEInput() && label === 'UPDATE') {
+            updateStudent(location?.state?.id, data).then(() => {
+                history.push("/");
+            })
         } else {
-            let {name, rollNo, ageOfStudent} = errorType;
-            setErrorType({name: name, rollNo: rollNo, ageOfStudent: ageOfStudent})
             setSubmit(true);
+        }
+
+        if (validADDInput() && label === 'ADD') {
+            addStudents(data).then(() => {
+                history.push('/');
+            });
         }
     };
 
@@ -81,6 +88,12 @@ const AddStudent: React.FC<ChildComponentProps> = ({location}) => {
             return 'UPDATE';
         }
         return 'ADD';
+    }
+    const getLabelErrorMessage = () => {
+        if (location?.state?.id) {
+            return 'At least one field should be edited!';
+        }
+        return 'Please fill proper input!';
     }
 
     return (
@@ -98,7 +111,8 @@ const AddStudent: React.FC<ChildComponentProps> = ({location}) => {
                     value={studentName}
                     onChange={(event) => handleValueChange(event)}
                 />
-                {errorType.name && <span style={{color: 'red'}}>Character should be of at least 3 character and less than 15 character!</span>}
+                {errorType.name && <span style={{color: 'red'}}>
+                    Character should be of at least 3 character and less than 15 character!</span>}
             </div>
             <div className='textField'>
                 <TextField
@@ -131,7 +145,7 @@ const AddStudent: React.FC<ChildComponentProps> = ({location}) => {
                 {getLabel()}
             </Button>
             {submit ?
-                <span style={{color: 'red'}}>Please fill proper input!</span>
+                <span style={{color: 'red'}}>{getLabelErrorMessage()}</span>
                 :
                 <></>}
         </div>
