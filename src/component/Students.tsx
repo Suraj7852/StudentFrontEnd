@@ -20,7 +20,7 @@ const Students: React.FC = () => {
 
     return (
         <div>
-            <div style={{display: 'flex', flexDirection: 'column', backgroundColor: '#90bef5', margin:'1%'}}>
+            <div style={{display: 'flex', flexDirection: 'column', backgroundColor: '#90bef5', margin:'1%', width:'13%'}}>
                 <Button variant="outlined" color="primary" onClick={onClickHandler}>
                     ADD STUDENT
                 </Button>

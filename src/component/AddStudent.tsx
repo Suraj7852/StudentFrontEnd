@@ -25,19 +25,19 @@ const AddStudent: React.FC<ChildComponentProps> = ({location}) => {
         const {name, value} = event.target;
         switch (name) {
             case 'Name':
-                setStudentName(value);
-                (value.length > 3 && value.length < 15) ?
+                (value.length > 3 && value.length < 15) && (!!value.match(/^[A-Za-z]+$/)) ?
                     setErrorType({...errorType, name: false}) :
                     setErrorType({...errorType, name: true});
+                setStudentName(value);
                 break;
             case 'Age':
-                (parseInt(value) > 3 && parseInt(value) < 19) ?
+                (parseInt(value) > 3 && parseInt(value) < 19) && (!!value.match(/^[0-9\b]+$/)) ?
                     setErrorType({...errorType, ageOfStudent: false}) :
                     setErrorType({...errorType, ageOfStudent: true});
                 setAge(value);
                 break;
             case 'RollNo':
-                (parseInt(value) > 100 && parseInt(value) < 999) ?
+                (parseInt(value) > 100 && parseInt(value) < 999) && (!!value.match(/^[0-9\b]+$/)) ?
                     setErrorType({...errorType, rollNo: false}) :
                     setErrorType({...errorType, rollNo: true});
                 setRoll(value);
@@ -72,8 +72,6 @@ const AddStudent: React.FC<ChildComponentProps> = ({location}) => {
             updateStudent(location?.state?.id, data).then(() => {
                 history.push("/");
             })
-        } else {
-            setSubmit(true);
         }
 
         if (validADDInput() && label === 'ADD') {
