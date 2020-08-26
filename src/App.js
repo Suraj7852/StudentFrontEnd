@@ -4,10 +4,12 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Students from "./component/Students";
 import AddStudent from "./component/AddStudent";
 import StudentModal from "./component/StudentModal";
+import AppToolBar from "./component/Toolbar";
 
 const App = () => {
     return (
         <Router>
+            <AppToolBar />
             <Switch>
                 <Route path="/" component={Students} exact/>
                 <Route path="/addStudent" component={AddStudent}/>

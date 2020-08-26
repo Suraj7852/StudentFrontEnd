@@ -1,9 +1,10 @@
 .inputContent{
     width: 50%;
     margin: auto;
-    border: 3px solid;
     padding: 10px;
     text-align: center;
+    margin-top: 3%;
+    background-color: #90bef5;
 }
 .textField{
     display: flex;
@@ -12,4 +13,5 @@
     width: 50%;
     margin: auto;
     margin-bottom: 5%;
+    background-color: whitesmoke;
 }
